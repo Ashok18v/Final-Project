@@ -1,0 +1,75 @@
+﻿@model WebAppMvc.Models.MallDetailsModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add Shopping Mall</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label  asp-for="ShoppingMallName" class="control-label"></label>
+                <input id="Txt" asp-for="ShoppingMallName" class="form-control" />
+                <span asp-validation-for="ShoppingMallName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Built_in_Year" class="control-label"></label>
+                <input asp-for="Built_in_Year" class="form-control" />
+                <span asp-validation-for="Built_in_Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" asp-action="AddMallDetails" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+         <a class="btn btn-primary" asp-action="IndexForMall">Back to List</a>
+    </div>
+     <div class="col-md-8">
+        <span style="color:green" id="span1"><br></span>
+        <span style="color:red" id="span"><br></span>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+   <script type="text/javascript">
+        $(document).ready(function() {
+            $("#Txt").blur(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/MallDetails/MallNamecheckAjax",
+                    data: {"name": $("#Txt").val()},
+                    success: function(response) {
+                        $("#span").empty();
+                        if (response == "Accepted") {
+                            $("#span1").append(response);
+                        }
+                        else {
+                            $("#span").append(response + '<br>');
+                        }
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                   }
+                });
+            });
+        });
+    </script>

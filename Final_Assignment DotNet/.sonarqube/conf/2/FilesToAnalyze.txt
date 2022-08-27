@@ -1,0 +1,11 @@
+﻿C:\visual\Final_Assignment DotNet\Final_Assignment DotNetWebApi\AutoMapper\AutoMapping.cs
+C:\visual\Final_Assignment DotNet\Final_Assignment DotNetWebApi\Controllers\ShoppingMallController.cs
+C:\visual\Final_Assignment DotNet\Final_Assignment DotNetWebApi\Model\ShoppingMallModel.cs
+C:\visual\Final_Assignment DotNet\Final_Assignment DotNetWebApi\Program.cs
+C:\visual\Final_Assignment DotNet\Final_Assignment DotNetWebApi\obj\Debug\net6.0\Final_Assignment DotNetWebApi.GlobalUsings.g.cs
+C:\visual\Final_Assignment DotNet\Final_Assignment DotNetWebApi\obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.cs
+C:\visual\Final_Assignment DotNet\Final_Assignment DotNetWebApi\obj\Debug\net6.0\Final_Assignment DotNetWebApi.AssemblyInfo.cs
+C:\visual\Final_Assignment DotNet\Final_Assignment DotNetWebApi\obj\Debug\net6.0\Final_Assignment DotNetWebApi.MvcApplicationPartsAssemblyInfo.cs
+C:\visual\Final_Assignment DotNet\Final_Assignment DotNetWebApi\appsettings.Development.json
+C:\visual\Final_Assignment DotNet\Final_Assignment DotNetWebApi\appsettings.json
+C:\visual\Final_Assignment DotNet\Final_Assignment DotNetWebApi\Properties\launchSettings.json

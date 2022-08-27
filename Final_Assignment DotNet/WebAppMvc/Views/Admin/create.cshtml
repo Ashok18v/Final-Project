@@ -1,0 +1,75 @@
+﻿@model WebAppMvc.Models.AdminModel
+
+@{
+    ViewData["Title"] = "create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Registration</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input id="Txt" asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PAN_Number" class="control-label"></label>
+                <input asp-for="PAN_Number" class="form-control" />
+                <span asp-validation-for="PAN_Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" asp-action="Registering" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-8">
+        <span style="color:green" id="span1"><br></span>
+        <span style="color:red" id="span"><br></span>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+   <script type="text/javascript">
+        $(document).ready(function() {
+            $("#Txt").blur(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/EmailChecking",
+                    data: {"email": $("#Txt").val()},
+                    success: function(response) {
+                        $("#span").empty();
+                        if (response == "Accepted") {
+                            $("#span1").append(response);
+                        }
+                        else {
+                            $("#span").append(response + '<br>');
+                        }
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                   }
+                });
+            });
+        });
+    </script>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebAppMvc.Models.MallDetailsModel>
+
+@{
+    ViewData["Title"] = "IndexForMall";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("a#btn").click(function () {
+                alert("Are sure you want to delete?");
+            });
+    });
+</script>
+  
+<h1>Shooping Malls</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+   
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ShoppingMallName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Built_in_Year)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShoppingMallName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Built_in_Year)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">Details</a>
+                  <a asp-action="Delete"id="btn" asp-route-id="@item.Id" class="btn btn-warning">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

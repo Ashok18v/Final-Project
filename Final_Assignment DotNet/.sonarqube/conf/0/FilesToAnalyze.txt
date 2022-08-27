@@ -1,0 +1,7 @@
+﻿C:\visual\Final_Assignment DotNet\DatabaseLibrary\Data\Migrations\20220823070110_intial.cs
+C:\visual\Final_Assignment DotNet\DatabaseLibrary\Data\Migrations\20220823070110_intial.Designer.cs
+C:\visual\Final_Assignment DotNet\DatabaseLibrary\Data\Migrations\20220823070734_newone.cs
+C:\visual\Final_Assignment DotNet\DatabaseLibrary\Data\Migrations\20220823070734_newone.Designer.cs
+C:\visual\Final_Assignment DotNet\DatabaseLibrary\Data\Migrations\DbContextShoppingMallModelSnapshot.cs
+C:\visual\Final_Assignment DotNet\DatabaseLibrary\DbContextShoppingMall.cs
+C:\visual\Final_Assignment DotNet\DatabaseLibrary\Entities\ShoppingMallDetails.cs

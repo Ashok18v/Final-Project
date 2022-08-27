@@ -1,0 +1,96 @@
+﻿@model IEnumerable<WebAppMvc.Models.AdminModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>User List</h1>
+
+<p>
+    <a asp-action="ApprovalStatus" class="btn btn-success">Status</a>
+</p>
+<table class="table">
+    <caption>Registered User Details</caption>
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PAN_Number)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.RoleName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PAN_Number)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleName)
+                </td>
+                <td>
+                    <a id="post" asp-route-id="@item.Id" data-id="@item.Id" class="btn btn-success">Approve</a>
+                    <a id="reject" asp-route-id="@item.Id" data-id="@item.Id" class="btn btn-danger">Reject</a>
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#post").click(function() {
+            var h = ($(this).attr("data-id"));
+            $.ajax({
+                type: "POST",
+                url: "/Admin/PostdataApporval",
+                data: { "id": h},
+                success: function(response) {
+                    alert(response);
+                },
+                failure: function(response) {
+                    alert(response.responseText);
+                },
+                error: function(response) {
+                    alert(response.responseText);
+                }
+            });
+        });
+    });
+</script>
+ <script type="text/javascript">
+        $(document).ready(function() {
+            $("#reject").click(function () {
+                var h = ($(this).attr("data-id"));
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/rejected",
+                    data: {"id":h},
+                    success: function(response) { alert(response); },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                   }
+                });
+            });
+        });
+    </script>
